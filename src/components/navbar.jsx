@@ -22,9 +22,9 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/projects"
-                  className="flex items-center gap-x-2 text-xs sm:text-sm"
+                  className="flex items-center gap-x-2 text-xs sm:text-sm lg:text-lg"
                 >
-                  <CubeIcon className="h-3 sm:h-4 w-3 sm:w-4 text-blue" />
+                  <CubeIcon className="h-3 sm:h-4 w-3 sm:w-4 lg:h-5 lg:w-5 text-blue" />
                   <span className="text-darkWhite transition-all duration-200 ease-in-out hover:text-blue">
                     Projects
                   </span>
@@ -33,9 +33,9 @@ export default function Navbar() {
               <li>
                 <Link
                   href="/blog"
-                  className="flex items-center gap-x-2 text-xs sm:text-sm"
+                  className="flex items-center gap-x-2 text-xs sm:text-sm lg:text-lg"
                 >
-                  <ClipboardDocumentIcon className="h-3 sm:h-4 w-3 sm:w-4 text-blue" />
+                  <ClipboardDocumentIcon className="h-3 sm:h-4 w-3 sm:w-4 lg:h-5 lg:w-5 text-blue" />
                   <span className="text-darkWhite transition-all duration-200 ease-in-out hover:text-blue">
                     Blog
                   </span>
