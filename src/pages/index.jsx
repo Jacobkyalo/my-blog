@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import {
   BsFillFileEarmarkFill,
   BsGithub,
@@ -8,13 +8,19 @@ import {
   BsTwitter,
 } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
+import { allBlogs } from "contentlayer/generated";
 import { skills } from "@/data";
 import Container from "@/components/container";
 import ProjectCard from "@/components/project-card";
 import Hr from "@/components/hr";
 import Footer from "@/components/footer";
+import BlogCard from "@/components/blog-card";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
+});
 
 export default function Home() {
   <Head>
@@ -26,7 +32,7 @@ export default function Home() {
       <Container>
         <section className="my-28">
           <h1
-            className={`${inter.className} text-5xl sm:text-8xl lg:text-[150px] font-black mb-10 sm:mb-6 text-white`}
+            className={`${poppins.className} text-5xl sm:text-8xl lg:text-[150px] font-black mb-10 sm:mb-6 text-white`}
           >
             Jacob Kyalo
           </h1>
@@ -160,50 +166,18 @@ export default function Home() {
           <h1 className="mb-20 font-bold text-4xl sm:text-6xl text-white">
             Featured Blogs
           </h1>
-          <div className="bg-blue bg-opacity-20 p-6 rounded-xl mb-10">
-            <span className="mb-6 block text-blue text-base">
-              {new Date().toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-              {"  "}. 4 min read
-            </span>
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Writing better and clean TailwindCSS code in 2023
-            </h2>
-            <p className="text-darkWhite text-lg mb-6">
-              How can we write better and cleaner TailwindCSS code that is
-              scalable and and free from errors
-            </p>
-            <Link href="/blog/writing-better-and-clean-tailwindcss-code">
-              <span className="text-blue text-lg font-bold">
-                Read more &rarr;
-              </span>
-            </Link>
-          </div>
-          <div className="bg-blue bg-opacity-20 p-6 rounded-xl mb-10">
-            <span className="mb-6 block text-blue text-base">
-              {new Date().toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-              {"  "}. 4 min read
-            </span>
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Writing better and clean TailwindCSS code in 2023
-            </h2>
-            <p className="text-darkWhite text-lg mb-6">
-              How can we write better and cleaner TailwindCSS code that is
-              scalable and and free from errors
-            </p>
-            <Link href="/blog/writing-better-and-clean-tailwindcss-code">
-              <span className="text-blue text-lg font-bold">
-                Read more &rarr;
-              </span>
-            </Link>
-          </div>
+          {allBlogs
+            ?.sort(
+              (a, b) =>
+                new Date(b.publishedAt).getTime() -
+                new Date(a.publishedAt).getTime()
+            )
+            .slice(0, 2)
+            .map((blog) => (
+              <Link href={`/blog/${blog.slug}`} key={blog._id}>
+                <BlogCard blog={blog} />
+              </Link>
+            ))}
 
           {/* view all blogs button */}
           <Link href="/blog">
