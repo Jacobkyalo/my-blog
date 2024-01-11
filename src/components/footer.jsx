@@ -43,7 +43,11 @@ export default function Footer() {
         </li>
       </ul>
       <small className="block mt-20 lg:text-lg text-darkWhite">
-        Designed and developed by Jacob Kyalo &copy;{new Date().getFullYear()}
+        Designed and developed by{" "}
+        <Link className="text-blue" href="https://x.com/jacobkyalo_dev">
+          Jacob Kyalo
+        </Link>{" "}
+        &copy;{new Date().getFullYear()}
       </small>
     </footer>
   );
