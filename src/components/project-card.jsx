@@ -26,11 +26,11 @@ export default function ProjectCard() {
               className="flex gap-x-4 items-center hover:text-blue transition-all duration-200 ease-in-out"
             >
               <BsGithub size={24} className="text-blue" />
-              <span className="text-xl lg:text-2xl">Github</span>
+              <span className="text-xl lg:text-xl">Github</span>
             </Link>
           </li>
         </ul>
-        <p className="text-darkWhite text-2xl my-10">
+        <p className="text-darkWhite text-lg lg:text-2xl my-10">
           Better Tailwind is an award-winning component library that provides
           the building blocks needed to create an accessible app with speed ⚡️.
         </p>
