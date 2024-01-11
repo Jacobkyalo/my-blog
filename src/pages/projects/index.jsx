@@ -1,11 +1,35 @@
+import { NextSeo } from "next-seo";
+import Link from "next/link";
 import Container from "@/components/container";
 import Footer from "@/components/footer";
 import ProjectCard from "@/components/project-card";
-import Link from "next/link";
 
 export default function Projects() {
   return (
     <>
+      <NextSeo
+        title="Projects - Jacob Kyalo"
+        description="My Projects"
+        canonical="/projects"
+        openGraph={{
+          url: "/projects",
+          title: "Projects - Jacob Kyalo",
+          description: "My Projects",
+          images: [
+            {
+              url: "/logo.svg",
+              width: 1280,
+              height: 720,
+              alt: "Jacob Kyalo",
+            },
+          ],
+        }}
+        twitter={{
+          handle: "@jacobyalo_dev",
+          site: "@jacobkyalo_dev",
+          cardType: "summary_large_image",
+        }}
+      />
       <main>
         <Container>
           <section className="my-20">

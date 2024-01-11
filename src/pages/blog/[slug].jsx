@@ -1,3 +1,4 @@
+import { NextSeo } from "next-seo";
 import Image from "next/image";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { allBlogs } from "contentlayer/generated";
@@ -12,6 +13,29 @@ export default function BlogPost({ blog }) {
 
   return (
     <>
+      <NextSeo
+        title={`${blog.title}`}
+        description={`${blog.description}`}
+        canonical={`/blog/${blog.slug}`}
+        openGraph={{
+          url: `/blog/${blog.slug}`,
+          title: `${blog.title}`,
+          description: `${blog.description}`,
+          images: [
+            {
+              url: "/logo.svg",
+              width: 1280,
+              height: 720,
+              alt: "Jacob Kyalo",
+            },
+          ],
+        }}
+        twitter={{
+          handle: "@jacobyalo_dev",
+          site: "@jacobkyalo_dev",
+          cardType: "summary_large_image",
+        }}
+      />
       <main className="w-full md:container md:max-w-4xl">
         <Container>
           <section className="my-20 ">
