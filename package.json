@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.1.1",
+    "@vercel/analytics": "^1.1.2",
     "contentlayer": "^0.3.4",
     "next": "13.5.4",
     "next-contentlayer": "^0.3.4",
