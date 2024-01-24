@@ -1,5 +1,6 @@
+import Head from "next/head";
 import Link from "next/link";
-import { NextSeo } from "next-seo";
+// import { NextSeo } from "next-seo";
 import { Poppins } from "next/font/google";
 import {
   BsFillFileEarmarkFill,
@@ -11,7 +12,7 @@ import { MdEmail } from "react-icons/md";
 import { allBlogs } from "contentlayer/generated";
 import { skills } from "@/data/skills";
 import Container from "@/components/container";
-import ProjectCard from "@/components/project-card";
+// import ProjectCard from "@/components/project-card";
 import Hr from "@/components/hr";
 import Footer from "@/components/footer";
 import BlogCard from "@/components/blog-card";
@@ -25,29 +26,15 @@ const poppins = Poppins({
 export default function Home() {
   return (
     <>
-      <NextSeo
-        title="Jacob Kyalo - Fullstack developer & technical writer"
-        description="Fullstack developer & technical writer"
-        canonical="/"
-        openGraph={{
-          url: "/",
-          title: "Jacob Kyalo - Fullstack developer & technical writer",
-          description: "Fullstack developer & technical writer",
-          images: [
-            {
-              url: "/logo.svg",
-              width: 1280,
-              height: 720,
-              alt: "Jacob Kyalo",
-            },
-          ],
-        }}
-        twitter={{
-          handle: "@jacobyalo_dev",
-          site: "@jacobkyalo_dev",
-          cardType: "summary_large_image",
-        }}
-      />
+      <Head>
+        <title>Jacob Kyalo - Fullstack developer & technical writer</title>
+        <meta
+          name="description"
+          content="Fullstack developer & technical writer"
+        />
+        <meta name="author" content="Jacob Kyalo" />
+      </Head>
+
       <main>
         <Container>
           <section className="my-28">
@@ -158,7 +145,8 @@ export default function Home() {
             <h1 className="mb-20 font-bold text-4xl sm:text-6xl text-white">
               Featured Projects
             </h1>
-            <ProjectCard />
+            {/* <ProjectCard /> */}
+            <p className="text-white">Coming soon...</p>
             {/* view all projects button */}
             <Link href="/projects">
               <span className="text-blue text-sm block mt-8 sm:text-lg font-bold">
