@@ -35,19 +35,24 @@ export default function Home() {
           content="Fullstack developer & technical writer"
         />
         <meta name="author" content="Jacob Kyalo" />
-      </Head>
-      {/* <!-- Google tag (gtag.js) --> */}
-      <Script
-        async
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-      />
 
-      <Script id="gtag-script">
-        window.dataLayer = window.dataLayer || []; function gtag()
-        {dataLayer.push(arguments)}
-        gtag('js', new Date()); gtag('config', `$
-        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`);
-      </Script>
+        {/* <!-- Google tag (gtag.js) --> */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALTICS}`}
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALTICS}');
+            `,
+          }}
+        />
+      </Head>
 
       <main>
         <Container>
