@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Head from "next/head";
 import Link from "next/link";
 // import { NextSeo } from "next-seo";
@@ -33,6 +34,17 @@ export default function Home() {
           content="Fullstack developer & technical writer"
         />
         <meta name="author" content="Jacob Kyalo" />
+        {/* <!-- Google tag (gtag.js) --> */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        ></script>
+        <script>
+          window.dataLayer = window.dataLayer || []; function gtag()
+          {dataLayer.push(arguments)}
+          gtag('js', new Date()); gtag('config', `$
+          {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`);
+        </script>
       </Head>
 
       <main>
