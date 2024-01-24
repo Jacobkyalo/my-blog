@@ -39,7 +39,7 @@ export default function Home() {
       {/* <!-- Google tag (gtag.js) --> */}
       <Script
         async
-        src={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
       />
 
       <Script id="gtag-script">
