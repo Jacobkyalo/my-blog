@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Head from "next/head";
 import { useRouter } from "next/router";
-import { NextSeo } from "next-seo";
+// import { NextSeo } from "next-seo";
 import { useState } from "react";
 import { allBlogs } from "contentlayer/generated";
 import { BsSearch } from "react-icons/bs";
@@ -24,29 +25,11 @@ export default function Blog() {
 
   return (
     <>
-      <NextSeo
-        title="Blog - Jacob Kyalo"
-        description="My blog"
-        canonical="/blog"
-        openGraph={{
-          url: "/blog",
-          title: "Blog - Jacob Kyalo",
-          description: "My blog",
-          images: [
-            {
-              url: "/logo.svg",
-              width: 1280,
-              height: 720,
-              alt: "Jacob Kyalo",
-            },
-          ],
-        }}
-        twitter={{
-          handle: "@jacobyalo_dev",
-          site: "@jacobkyalo_dev",
-          cardType: "summary_large_image",
-        }}
-      />
+      <Head>
+        <title>Blogs - Jacob Kyalo</title>
+        <meta name="description" content="My Blogs" />
+        <meta name="author" content="Jacob Kyalo" />
+      </Head>
       <main>
         <Container>
           <section className="my-20">

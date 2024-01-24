@@ -1,35 +1,21 @@
-import { NextSeo } from "next-seo";
+// import { NextSeo } from "next-seo";
 import Link from "next/link";
+import Head from "next/head";
 import Container from "@/components/container";
 import Footer from "@/components/footer";
 import ProjectCard from "@/components/project-card";
 
 export default function Projects() {
+  let show = true;
+
   return (
     <>
-      <NextSeo
-        title="Projects - Jacob Kyalo"
-        description="My Projects"
-        canonical="/projects"
-        openGraph={{
-          url: "/projects",
-          title: "Projects - Jacob Kyalo",
-          description: "My Projects",
-          images: [
-            {
-              url: "/logo.svg",
-              width: 1280,
-              height: 720,
-              alt: "Jacob Kyalo",
-            },
-          ],
-        }}
-        twitter={{
-          handle: "@jacobyalo_dev",
-          site: "@jacobkyalo_dev",
-          cardType: "summary_large_image",
-        }}
-      />
+      <Head>
+        <title>Projects - Jacob Kyalo</title>
+        <meta name="description" content="My Projects" />
+        <meta name="author" content="Jacob Kyalo" />
+      </Head>
+
       <main>
         <Container>
           <section className="my-20">
@@ -45,11 +31,19 @@ export default function Projects() {
               </Link>
             </p>
           </section>
+
           <section className="flex flex-col gap-y-16 mb-40">
-            <ProjectCard />
-            <ProjectCard />
-            <ProjectCard />
+            {show ? (
+              <p className="text-white">Coming soon...</p>
+            ) : (
+              <>
+                <ProjectCard />
+                <ProjectCard />
+                <ProjectCard />
+              </>
+            )}
           </section>
+
           <Footer />
         </Container>
       </main>
