@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import Head from "next/head";
 import Link from "next/link";
+import Script from "next/script";
 // import { NextSeo } from "next-seo";
 import { Poppins } from "next/font/google";
 import {
@@ -34,18 +35,19 @@ export default function Home() {
           content="Fullstack developer & technical writer"
         />
         <meta name="author" content="Jacob Kyalo" />
-        {/* <!-- Google tag (gtag.js) --> */}
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-        ></script>
-        <script>
-          window.dataLayer = window.dataLayer || []; function gtag()
-          {dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', `$
-          {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`);
-        </script>
       </Head>
+      {/* <!-- Google tag (gtag.js) --> */}
+      <Script
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+
+      <Script id="gtag-script">
+        window.dataLayer = window.dataLayer || []; function gtag()
+        {dataLayer.push(arguments)}
+        gtag('js', new Date()); gtag('config', `$
+        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`);
+      </Script>
 
       <main>
         <Container>
