@@ -29,6 +29,7 @@ export default function Home() {
                 src="/my_photo_collage.jpg"
                 width={100}
                 height={100}
+                priority
                 alt="my_photo"
                 className="rounded-full object-cover border-4 border-blue-600"
               />

@@ -52,6 +52,7 @@ export default function About() {
             <Image
               src="/my_photo_collage.jpg"
               alt="my_photo"
+              priority
               width={500}
               height={500}
               className="rounded-lg border-2 order-1 sm:order-2 border-blue-600 w-72 h-72 object-cover"
