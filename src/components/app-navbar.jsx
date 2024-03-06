@@ -16,7 +16,7 @@ export default function AppNavbar() {
       <Link href="/">
         <h2 className="font-bold text-black text-lg">Jacob</h2>
       </Link>
-      <nav>
+      <nav className="bg-white bg-opacity-0 rounded-full shadow-lg sm:shadow-none p-4 sm:p-0 border sm:border-none">
         <ul className="flex items-center gap-x-4">
           {AppNavbarLinks.map((link) => (
             <li key={link.href}>
