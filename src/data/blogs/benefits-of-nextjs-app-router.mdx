@@ -1,0 +1,165 @@
+---
+title: Benefits of Using the Nextjs App Router
+publishedAt: 2023-12-24
+description: Understanding in depth the benefits of the new Nextjs App Router compared to Pages Router
+---
+
+Next.js provides a powerful app router that offers several benefits for building web applications. Here are some of the key advantages
+
+## Client-Side Navigation
+
+Next.js app router enables client-side navigation, allowing for smooth and fast page transitions without full page reloads. This improves the user experience and performance of your application.
+
+```jsx
+import Link from "next/link";
+
+const HomePage = () => {
+  return (
+    <div>
+      <h1>Welcome to the Home Page!</h1>
+      <Link href="/about">
+        <a>About</a>
+      </Link>
+    </div>
+  );
+};
+
+export default HomePage;
+```
+
+## Code Splitting
+
+Next.js automatically performs code splitting, which means that only the necessary JavaScript code is loaded for each page. This helps reduce the initial load time and improves overall performance.
+
+```jsx
+import dynamic from "next/dynamic";
+
+const DynamicComponent = dynamic(() =>
+  import("../components/DynamicComponent")
+);
+
+const HomePage = () => {
+  return (
+    <div>
+      <h1>Welcome to the Home Page!</h1>
+      <DynamicComponent />
+    </div>
+  );
+};
+
+export default HomePage;
+```
+
+## Server-Side Rendering (SSR)
+
+Next.js supports server-side rendering out of the box. This means that your pages can be rendered on the server and sent to the client as fully rendered HTML. SSR improves SEO, initial page load time, and provides a better user experience.
+
+```jsx
+import { getServerSideProps } from "next";
+
+const HomePage = ({ data }) => {
+  return (
+    <div>
+      <h1>Welcome to the Home Page!</h1>
+      <p>{data}</p>
+    </div>
+  );
+};
+
+export const getServerSideProps = async () => {
+  const res = await fetch("https://api.example.com/data");
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+export default HomePage;
+```
+
+## Dynamic Routing
+
+Next.js app router allows for dynamic routing, where you can define routes with parameters. This makes it easy to create dynamic pages that can handle different data based on the URL parameters.
+
+```jsx
+import { useRouter } from "next/router";
+
+const UserPage = () => {
+  const router = useRouter();
+  const { userId } = router.query;
+
+  return (
+    <div>
+      <h1>User Profile</h1>
+      <p>User ID: {userId}</p>
+    </div>
+  );
+};
+
+export default UserPage;
+```
+
+## API Routes
+
+Next.js provides built-in API routes, allowing you to create serverless API endpoints within your Next.js application. This simplifies the process of building backend functionality and integrating with external services.
+
+```jsx
+// app/api/users.js
+export default (req, res) => {
+  const users = [
+    { id: 1, name: "John" },
+    { id: 2, name: "Jane" },
+  ];
+
+  res.status(200).json(users);
+};
+```
+
+## Automatic Code Splitting
+
+Next.js automatically splits your code into smaller chunks based on the routes in your application. This helps optimize the loading time and performance of your application.
+
+## Built-in CSS and Sass Support
+
+Next.js has built-in support for CSS and Sass, making it easy to style your application. You can import CSS or Sass files directly into your components and Next.js will handle the bundling and optimization.
+
+```jsx
+// styles.module.css
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+// components/MyComponent.js
+import styles from './styles.module.css';
+
+const MyComponent = () => {
+  return <div className={styles.container}>Hello, Next.js!</div>;
+};
+
+export default MyComponent;
+```
+
+## TypeScript Support
+
+Next.js has excellent TypeScript support out of the box. You can write your Next.js application using TypeScript, which provides static typing and helps catch errors early in the development process.
+
+```tsx
+// components/MyComponent.tsx
+type Props = {
+  name: string;
+};
+
+const MyComponent: React.FC<Props> = ({ name }) => {
+  return <div>Hello, {name}!</div>;
+};
+
+export default MyComponent;
+```
+
+These are just a few of the benefits of using the Next.js app router. Next.js is a powerful framework that simplifies the development of modern web applications and provides a great developer experience.
+
+Happy coding!
