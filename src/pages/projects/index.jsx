@@ -1,51 +1,44 @@
-// import { NextSeo } from "next-seo";
 import Link from "next/link";
 import Head from "next/head";
-import Container from "@/components/container";
-import Footer from "@/components/footer";
+import { projects } from "@/data/projects";
 import ProjectCard from "@/components/project-card";
+import AppNavbar from "@/components/app-navbar";
+import AppSeparator from "@/components/app-separator";
 
 export default function Projects() {
-  let show = true;
-
   return (
     <>
       <Head>
-        <title>Projects - Jacob Kyalo</title>
-        <meta name="description" content="My Projects" />
+        <title>Projects | Jacob</title>
+        <meta name="description" content="Projects" />
         <meta name="author" content="Jacob Kyalo" />
       </Head>
+      <AppNavbar />
 
       <main>
-        <Container>
-          <section className="my-20">
-            <h1 className="mb-4 font-bold text-4xl sm:text-6xl text-white">
-              Latest Projects
-            </h1>
-            <p className="text-darkWhite text-lg mb-6 w-full max-w-lg">
-              Here are some of my latest projects. I am always working on
-              something new, so check back often to see what I am up to. If you
-              want to see more of my work, check out my{" "}
-              <Link href="https://github.com/Jacobkyalo" target="_blank">
-                GitHub
+        <section className="my-16">
+          <>
+            <h1 className="text-3xl sm:text-5xl font-black mb-2">Projects</h1>
+            <p className="font-medium sm:text-lg">
+              Here are some things I&apos;ve worked on. More on my{" "}
+              <Link
+                href="https://github.com/JacobKyalo"
+                target="_blank"
+                className="text-blue-600 hover:underline"
+              >
+                GitHub &rarr;
               </Link>
             </p>
-          </section>
-
-          <section className="flex flex-col gap-y-16 mb-40">
-            {show ? (
-              <p className="text-white">Coming soon...</p>
-            ) : (
-              <>
-                <ProjectCard />
-                <ProjectCard />
-                <ProjectCard />
-              </>
-            )}
-          </section>
-
-          <Footer />
-        </Container>
+          </>
+        </section>
+        <AppSeparator />
+        <section className="my-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+            {projects.map((project) => (
+              <ProjectCard key={project} project={project} />
+            ))}
+          </div>
+        </section>
       </main>
     </>
   );
