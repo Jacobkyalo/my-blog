@@ -1,54 +1,10 @@
-// import { NextSeo } from "next-seo";
 import Head from "next/head";
-import Image from "next/image";
+import Link from "next/link";
+import { format, parseISO } from "date-fns";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { allBlogs } from "contentlayer/generated";
-import Container from "@/components/container";
-import Hr from "@/components/hr";
+import AppSeparator from "@/components/app-separator";
 import { components } from "@/components/mdx-components";
-import logo from "@/assets/images/logo.svg";
-import Footer from "@/components/footer";
-
-export default function BlogPost({ blog }) {
-  const MDXContent = useMDXComponent(blog.body.code);
-
-  return (
-    <>
-      <Head>
-        <title>{`${blog.title}`}</title>
-        <meta name="description" content={`${blog.description}`} />
-        <meta name="author" content="Jacob Kyalo" />
-      </Head>
-      <main className="w-full md:container md:max-w-4xl">
-        <Container>
-          <section className="my-20 ">
-            <h1 className="mb-10 font-bold text-4xl sm:text-6xl text-white w-full max-w-6xl">
-              {blog.title}
-            </h1>
-            <span className="mb-6 block text-blue text-base">
-              Published on{" "}
-              {new Date(blog.publishedAt).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </span>
-            <div className="flex items-center gap-x-4 text-white mb-10">
-              <Image src={logo} alt="logo" />
-              <span className="text-lg text-white">Jacob Kyalo</span>
-            </div>
-          </section>
-          <section className="prose text-darkWhite">
-            <MDXContent components={components} />
-          </section>
-        </Container>
-      </main>
-      <Container>
-        <Footer />
-      </Container>
-    </>
-  );
-}
 
 export async function getStaticPaths() {
   return {
@@ -66,4 +22,43 @@ export async function getStaticProps({ params }) {
     };
 
   return { props: { blog } };
+}
+
+export default function BlogPost({ blog }) {
+  const MDXContent = useMDXComponent(blog.body.code);
+
+  return (
+    <>
+      <Head>
+        <title>{`${blog.title}`}</title>
+        <meta name="description" content={`${blog.description}`} />
+        <meta name="author" content="Jacob Kyalo" />
+      </Head>
+      <main className="w-full md:container md:max-w-4xl">
+        <section className="my-16">
+          <Link href="/blog">
+            <span className="text-blue-600 hover:underline block mb-6 font-bold">
+              &larr; All Blogs
+            </span>
+          </Link>
+
+          <h2 className="text-3xl sm:text-5xl font-black mb-4">
+            {blog?.title}
+          </h2>
+          <p className="text-lg text-slate-600 mb-6">{blog?.description}</p>
+          <span className="text-slate-600">
+            Published on{" "}
+            <time dateTime={blog?.publishedAt} className="font-bold">
+              {format(parseISO(blog?.publishedAt), "LLLL d, yyyy")}
+            </time>{" "}
+            - by Jacob Kyalo
+          </span>
+        </section>
+        <AppSeparator />
+        <section className="mt-16 prose prose-headings-underline">
+          <MDXContent components={components} />
+        </section>
+      </main>
+    </>
+  );
 }
