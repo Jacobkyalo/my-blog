@@ -9,17 +9,12 @@ module.exports = {
     extend: {
       container: {
         center: true,
-        padding: "2rem",
-      },
-      colors: {
-        blue: "#4361ee",
-        darkWhite: "#adb5bd",
-        black: "#1c1917",
+        padding: "1rem",
       },
       screens: {
         "2xl": "1400px",
       },
     },
-    plugins: [],
+    plugins: [require("@tailwindcss/typography")],
   },
 };
