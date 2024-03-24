@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Head from "next/head";
+import { Helmet } from "react-helmet";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/project-card";
 import AppNavbar from "@/components/app-navbar";
@@ -8,11 +8,11 @@ import AppSeparator from "@/components/app-separator";
 export default function Projects() {
   return (
     <>
-      <Head>
+      <Helmet>
         <title>Projects | Jacob</title>
         <meta name="description" content="Projects" />
         <meta name="author" content="Jacob Kyalo" />
-      </Head>
+      </Helmet>
       <AppNavbar />
 
       <main>
@@ -34,8 +34,8 @@ export default function Projects() {
         <AppSeparator />
         <section className="my-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
-            {projects.map((project) => (
-              <ProjectCard key={project} project={project} />
+            {projects.map((project, index) => (
+              <ProjectCard key={index} project={project} />
             ))}
           </div>
         </section>

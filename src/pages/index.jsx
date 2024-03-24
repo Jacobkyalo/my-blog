@@ -1,6 +1,6 @@
-import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { Helmet } from "react-helmet";
 import { allBlogs } from "contentlayer/generated";
 import { projects } from "@/data/projects";
 import AppNavbar from "@/components/app-navbar";
@@ -12,14 +12,15 @@ import BlogCard from "@/components/blog-card";
 export default function Home() {
   return (
     <>
-      <Head>
+      <Helmet>
         <title>Home | Jacob</title>
         <meta
           name="description"
           content="Fullstack developer & technical writer"
         />
         <meta name="author" content="Jacob Kyalo" />
-      </Head>
+      </Helmet>
+
       <AppNavbar />
       <main>
         <AppContainer>
@@ -51,9 +52,9 @@ export default function Home() {
             <h2 className="font-black text-2xl sm:text-3xl mb-10">
               Featured projects
             </h2>
-            <div>
-              {projects?.slice(0, 2)?.map((project) => (
-                <ProjectCard key={project} project={project} />
+            <div className="grid gap-10">
+              {projects?.slice(0, 2)?.map((project, index) => (
+                <ProjectCard key={index} project={project} />
               ))}
             </div>
             <Link href="/projects" className="text-blue-600">

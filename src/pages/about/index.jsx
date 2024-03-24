@@ -1,5 +1,5 @@
 import React from "react";
-import Head from "next/head";
+import { Helmet } from "react-helmet";
 import Link from "next/link";
 import Image from "next/image";
 import { GitHub, Linkedin, Mail, Twitter } from "react-feather";
@@ -33,11 +33,11 @@ const socialLinks = [
 export default function About() {
   return (
     <>
-      <Head>
+      <Helmet>
         <title>About | Jacob</title>
         <meta name="description" content="About" />
         <meta name="author" content="Jacob Kyalo" />
-      </Head>
+      </Helmet>
       <AppNavbar />
 
       <main>

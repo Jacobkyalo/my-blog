@@ -1,4 +1,4 @@
-import Head from "next/head";
+import { Helmet } from "react-helmet";
 import { allBlogs } from "contentlayer/generated";
 import BlogCard from "@/components/blog-card";
 import AppNavbar from "@/components/app-navbar";
@@ -7,11 +7,11 @@ import AppSeparator from "@/components/app-separator";
 export default function Blog() {
   return (
     <>
-      <Head>
+      <Helmet>
         <title>Blog | Jacob </title>
         <meta name="description" content="Blog" />
         <meta name="author" content="Jacob Kyalo" />
-      </Head>
+      </Helmet>
       <AppNavbar />
 
       <main>
