@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function ProjectCard({ project }) {
   return (
-    <div className="mb-8 border p-4 rounded-lg">
+    <div className="border p-4 rounded-lg">
       <div>
         <Link href={`${project?.href}`} target="_blank">
           <h2 className="text-2xl font-bold mb-1">{project?.title}</h2>
