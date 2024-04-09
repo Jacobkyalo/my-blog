@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 import { projects } from "@/data/projects";
 import ProjectCard from "@/components/project-card";
 import AppNavbar from "@/components/app-navbar";
@@ -8,11 +8,11 @@ import AppSeparator from "@/components/app-separator";
 export default function Projects() {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Projects | Jacob</title>
         <meta name="description" content="Projects" />
         <meta name="author" content="Jacob Kyalo" />
-      </Helmet>
+      </Head>
       <AppNavbar />
 
       <main>

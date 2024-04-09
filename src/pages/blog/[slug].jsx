@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 import Link from "next/link";
 import { format, parseISO } from "date-fns";
 import { useMDXComponent } from "next-contentlayer/hooks";
@@ -29,11 +29,11 @@ export default function BlogPost({ blog }) {
 
   return (
     <>
-      <Helmet>
+      <Head>
         <title>{`${blog.title}`}</title>
         <meta name="description" content={`${blog.description}`} />
         <meta name="author" content="Jacob Kyalo" />
-      </Helmet>
+      </Head>
       <main className="w-full md:container md:max-w-4xl">
         <section className="my-16">
           <Link href="/blog">

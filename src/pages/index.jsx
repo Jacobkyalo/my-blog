@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Helmet } from "react-helmet";
+import Head from "next/head";
 import { allBlogs } from "contentlayer/generated";
 import { projects } from "@/data/projects";
 import AppNavbar from "@/components/app-navbar";
@@ -12,14 +12,14 @@ import BlogCard from "@/components/blog-card";
 export default function Home() {
   return (
     <>
-      <Helmet>
+      <Head>
         <title>Home | Jacob</title>
         <meta
           name="description"
           content="Fullstack developer & technical writer"
         />
         <meta name="author" content="Jacob Kyalo" />
-      </Helmet>
+      </Head>
 
       <AppNavbar />
       <main>
