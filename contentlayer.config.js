@@ -1,5 +1,7 @@
 import { defineDocumentType, makeSource } from "contentlayer/source-files";
 import remarkGfm from "remark-gfm";
+import rehypePrism from "rehype-prism-plus";
+import rehypeCodeTitles from "rehype-code-titles";
 
 const Blog = defineDocumentType(() => ({
   name: "Blog",
@@ -32,5 +34,6 @@ export default makeSource({
   documentTypes: [Blog],
   mdx: {
     remarkPlugins: [remarkGfm],
+    rehypePlugins: [rehypeCodeTitles, rehypePrism],
   },
 });
