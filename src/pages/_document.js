@@ -1,4 +1,3 @@
-import { Analytics } from "@vercel/analytics/react";
 import { Html, Head, Main, NextScript } from "next/document";
 import AppFooter from "@/components/app-footer";
 import AppContainer from "@/components/app-container";
@@ -13,7 +12,6 @@ export default function Document() {
           <AppFooter />
         </AppContainer>
         <NextScript />
-        <Analytics />
       </body>
     </Html>
   );
