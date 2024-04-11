@@ -26,7 +26,6 @@ export async function getStaticProps({ params }) {
 
 export default function BlogPost({ blog }) {
   const MDXContent = useMDXComponent(blog.body.code);
-
   return (
     <>
       <Head>
