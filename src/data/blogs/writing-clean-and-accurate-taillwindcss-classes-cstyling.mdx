@@ -20,7 +20,7 @@ When applying Tailwind CSS classes, be specific with your class names to ensure 
 
 To improve readability and organization, group related Tailwind CSS classes together. This allows you to quickly identify and modify styles for specific elements or components. By keeping related classes together, you can easily understand the styling applied to a particular element without having to search through the entire codebase.
 
-```
+```html
 <div class="bg-blue-500 text-white p-5 rounded-lg">
   <p class="font-bold text-lg">Grouped Classes Example</p>
 </div>
@@ -30,8 +30,10 @@ To improve readability and organization, group related Tailwind CSS classes toge
 
 Tailwind CSS provides responsive utility classes that allow you to apply different styles based on screen sizes. Take advantage of these classes to create responsive designs without writing custom media queries. By using responsive classes, you can ensure that your website or application looks great on various devices and screen sizes.
 
-```
-<div class="bg-green-500 text-white p-5 rounded-lg sm:bg-red-500 md:bg-yellow-500 lg:bg-blue-500">
+```html
+<div
+  class="bg-green-500 text-white p-5 rounded-lg sm:bg-red-500 md:bg-yellow-500 lg:bg-blue-500"
+>
   <p class="font-bold text-lg">Responsive Classes Example</p>
 </div>
 ```
@@ -40,18 +42,18 @@ Tailwind CSS provides responsive utility classes that allow you to apply differe
 
 Tailwind CSS offers a highly customizable configuration file that allows you to tailor the framework to your specific needs. Take the time to review and modify the default configuration to match your project requirements. By customizing the configuration, you can remove unused styles, define your own color palette, and optimize the output CSS file size.
 
-```
+```javascript
 module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-color': '#123456',
+        "custom-color": "#123456",
       },
     },
   },
   variants: {},
   plugins: [],
-}
+};
 ```
 
 ## Conclusion
