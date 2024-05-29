@@ -1,0 +1,236 @@
+---
+title: Handling Form Validation Using Zod, React-hook-form, and Typescript
+publishedAt: 2024-05-29
+description: Learn how to validate your applications forms using latest tools like Zod, react-hook-form, and Typescript with React
+---
+
+## Introduction
+
+Forms are very fundamental when building web applications. Actually any web application contains one or more forms. These forms are used to collect user data and sent it to the server or store data in a database.
+
+Therefore, validating forms before user sent data to the database is very crucial process to ensure that data collected from users is accurate and complete thus preventing malicious users from submitting [harmful data or code](https://clearout.io/blog/form-validation/). Let's dive in.
+
+This article assumes that you have a basic understanding of what react is and how to create react components. If not check [react docs](https://react.dev/learn) for more information.
+
+## What to learn
+
+By the end of this article, you will have a better understanding of the following concepts:
+
+- How to create a react application with Vite and Typescript
+- What is Zod, React-hook-form, and Typescript
+- How to create form schemas
+- How to style react components using TailwindCSS
+- How to display form errors
+
+## Creating a react application with Vite and Typescript
+
+To follow around, you will have to create a new react application using Vite and Typescript. Navigate to a directory where you want to create your react app and run the following command in your command line or terminal
+
+```bash
+npm create vite@latest form-validation
+```
+
+This command will scalfold react-vite application called **form-validation** with typescript. Make sure to choose React and Typescript from the terminal prompts. Now change directory to the newly created app by:
+
+```bash
+cd form-validation
+```
+
+You will also need to install the dependencies from the scalfolded application using this command
+
+```bash
+npm install // or npm i
+```
+
+## Setting up TailwindCSS
+
+TailwindCSS is [utility-first CSS framework](https://tailwindcss.com) packed with classes that can be composed to build any design, directly in your markup (HTML). To install and configure Tailwind CSS in your [vite project](https://tailwindcss.com/docs/guides/vite). Install Tailwind CSS and its dependencies by running this command in your terminal
+
+```bash
+npm install -D tailwindcss postcss autoprefixer
+```
+
+Initialize TailwindCSS Configuration by running this command in your terminal
+
+```bash
+npx tailwindcss init -p
+```
+
+This command will create a _tailwind.config.js_ file and a _postcss.config.js_ file in your project root. Open _tailwind.config.js_ and configure the _content_ array to include your template files by pasting the following code
+
+```js
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+To finish setting up TailwindCSS, you need to add Tailwind directives to root CSS file that is _src/index.css_ and paste the following code. Also, delete the _src/App.css_ file to remove the default styles.
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+## Creating a form
+
+For this article, we will create a login form with a email and password fields. For simplicity we will put all our code in the _App.tsx_ file. Delete the code in _App.tsx_ and paste the following code
+
+```jsx
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+
+const schema = z.object({
+  email: z.string().email({
+    message: "Please enter a valid email",
+  }),
+  password: z.string().min(8, {
+    message: "Password must be at least 8 characters",
+  }),
+});
+
+type FormSchema = z.infer<typeof schema>;
+
+export default function App() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm <
+  FormSchema >
+  {
+    resolver: zodResolver(schema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  };
+
+  const onSubmit = (data: FormSchema) => {
+    console.log(data);
+  };
+
+  return (
+    <main className="h-screen grid place-items-center">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full max-w-xl bg-white shadow-lg border p-8 rounded-lg"
+      >
+        <div className="mb-4">
+          <label htmlFor="email" className="block mb-2">
+            Email adress
+          </label>
+          <input
+            id="email"
+            type="email"
+            {...register("email")}
+            placeholder="Email address"
+            className="w-full outline-none p-3 border focus:border-2 focus:border-blue-600 rounded-lg"
+          />
+          {errors.email && (
+            <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>
+          )}
+        </div>
+
+        <div className="mb-4">
+          <label htmlFor="password" className="block mb-2">
+            Password
+          </label>
+          <input
+            id="password"
+            type="password"
+            {...register("password")}
+            placeholder="Password"
+            className="w-full outline-none p-3 border focus:border-2 focus:border-blue-600 rounded-lg"
+          />
+          {errors.password && (
+            <p className="text-sm text-red-600 mt-1">
+              {errors.password.message}
+            </p>
+          )}
+        </div>
+        <button
+          className="w-full rounded-lg p-3 bg-blue-600 text-white"
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+    </main>
+  );
+}
+```
+
+Run the following command on your terminal to start the development server
+
+```bash
+npm run dev
+```
+
+You should see the following interface on your browser if all goes well
+
+![login-form](/assets/blog/login-form.png)
+
+That's alot. Let me explain. First of we are importing zod like _z_ form zod. [Zod](https://zod.dev) is a TypeScript-first schema validation with static type inference. It helps define schemas for form validations.
+
+Then we are defining a type for our form schema like this
+
+```jsx
+type FormSchema = z.infer<typeof schema>;
+```
+
+Inside the _App_ component in _App.tsx_ file, we are using _useForm_ from react-hook-form with zodResolver to validate the form. [React-hook-form](https://react-hook-form.com) is a performant, flexible and extensible form validation library.
+
+From the _useForm_ hook, we are destructuring three things:
+
+- The _register_ method that is a powerful utility that connects our input elements (email & password) to the library, enabling seamless form state management and validation.
+- The _handleSubmit_ method is used to handle form submission
+- The _formState_ object is used to handle form validation errors
+
+**Note:** Each field is required to have a name as a key for the registration process to happen and react-hook-form to know which form field to validate
+
+We are assigning the _FormShema_ type to the _useForm_ hook. We are also setting the resolver to _zodResolver_ that comes from the _@hookform/resolvers_ package. Finally, we are setting the defaultValues of input fields (email & password) to empty strings at first.
+
+On the _form_ tag, we are passing the _handleSubmit_ method to the _onSubmit_ event listener of the form and then the _handleSubmit_ method takes one argument which is the _onSubmit_ function that we just created that logs the form data to the console.
+
+Finally, we are creating our form, registering the input fields with react-hook-form, and adding some [tailwindcss](https://tailwindcss.com/docs) utility classes to make the form look nicer.
+
+## Displaying error messages
+
+The _p_ tag below each input field is used to display an error message if any of the field validation fails.
+
+```jsx
+//...
+{
+  errors.email && (
+    <p className="text-sm text-red-600 mt-1">{errors.email.message}</p>
+  );
+}
+//...
+{
+  errors.password && (
+    <p className="text-sm text-red-600 mt-1">{errors.password.message}</p>
+  );
+}
+//...
+```
+
+When the form validation fails, you should see this form errors on your browser.
+
+![login-form-error](/assets/blog/login-form-error.png)
+
+Now, if you fill the form correctly and submit, you should see your login details on the developer console. Open developer console by pressing the _F12_ or _Ctrl+Shift+J_ on Windows or _Cmd+Option+J_ on Mac. You should see the following interface on your browser
+
+![login-form-success](/assets/blog/login-form-success.png)
+
+## Conclusion
+
+Incorporating form validation in a [React](https://react.dev/learn) applications can be greatly simplified and enhanced with the use of [Zod](https://zod.dev) and [React-hook-form](https://react-hook-form.com). Zod provides a powerful, schema-based validation system that ensures your data adheres to defined rules, offering both type safety and runtime validation. Combined with react-hook-form, a library designed to provide flexible and performant form management, you can create robust forms which are more secure. This can help improve [Web Security](https://developer.mozilla.org/en-US/docs/Learn/Server-side/First_steps/Website_security) in general and minimize threats that may occur due insecure forms.
+
+Happy coding!
