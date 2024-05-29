@@ -44,8 +44,16 @@ export const components = {
   tr: (props) => <tr className="border-b border-blue" {...props} />,
   strong: (props) => <strong className="font-semibold" {...props} />,
   em: (props) => (
-    <em className="italic bg-slate-300 px-1 rounded-lg" {...props} />
+    <em className="not-italic bg-slate-200 px-1 rounded-lg" {...props} />
   ),
   del: (props) => <del className="line-through" {...props} />,
-  img: (props) => <Image alt="image" className="my-8" {...props} />,
+  img: (props) => (
+    <Image
+      alt="image"
+      className="my-8 w-full h-full"
+      width={500}
+      height={500}
+      {...props}
+    />
+  ),
 };
