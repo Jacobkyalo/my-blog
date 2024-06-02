@@ -19,6 +19,10 @@ export default function Home() {
           content="Fullstack developer & technical writer"
         />
         <meta name="author" content="Jacob Kyalo" />
+        <meta property="og:title" content="Home | Jacob" />
+        <meta property="og:image" content="/opengraph-image.png" />
+        <meta property="twitter:title" content="Home | Jacob" />
+        <meta property="twitter:image" content="/twitter-image.png" />
         <meta
           name="google-site-verification"
           content="AJ8oWCJPQuX5Qn4kPFg1fTb_56oc73AdYnfDOtkgBBM"
