@@ -34,8 +34,15 @@ export default function About() {
   return (
     <>
       <Head>
-        <title>About | Jacob</title>
-        <meta name="description" content="About" />
+        <title>About | Jacob Kyalo</title>
+        <meta
+          name="description"
+          content="Learn more about Jacob Kyalo, a fullstack web developer, a technical writer, and a software developer specializing in React, Nextjs and MERN Stack"
+        />
+        <meta
+          name="keywords"
+          content="Jacob Kyalo, about Jacob Kyalo, fullstack web developer , technical writer, software developer skills, Nextjs developer, React developer"
+        />
         <meta name="author" content="Jacob Kyalo" />
       </Head>
       <AppNavbar />

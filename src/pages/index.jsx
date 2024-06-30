@@ -13,10 +13,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | Jacob</title>
+        <title>Home | Jacob Kyalo</title>
         <meta
           name="description"
-          content="Fullstack developer & technical writer"
+          content="Fullstack web developer & technical writer. Check out my portfolio and latest projects."
+        />
+        <meta
+          name="keywords"
+          content="Jacob Kyalo, Jacob, Kyalo, frontend developer, front-end developer backend developer, back-end developer, fullstack developer, full-stack developer, web developer, web development, software engineer, software developer, JavaScript, TypeScript, React, Reactjs, Nextjs, Next.js, Vercel, personal projects, tech blog, tech blogs, technical writer, technical writing, technical articles, coding projects,portfolio"
         />
         <meta name="author" content="Jacob Kyalo" />
         <meta property="og:title" content="Home | Jacob" />

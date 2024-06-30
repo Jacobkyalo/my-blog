@@ -9,10 +9,18 @@ export default function Projects() {
   return (
     <>
       <Head>
-        <title>Projects | Jacob</title>
-        <meta name="description" content="Projects" />
+        <title>Projects | Jacob Kyalo</title>
+        <meta
+          name="description"
+          content="Explore the portfolio of Jacob Kyalo, showcasing web development projects and custom applications built using Nextjs, React, and other technologies."
+        />
+        <meta
+          name="keywords"
+          content="Jacob Kyalo projects, web development portfolio, Nextjs projects, React projects, custom web applications, software development"
+        />
         <meta name="author" content="Jacob Kyalo" />
       </Head>
+
       <AppNavbar />
 
       <main>
