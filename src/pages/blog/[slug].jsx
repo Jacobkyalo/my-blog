@@ -31,6 +31,10 @@ export default function BlogPost({ blog }) {
       <Head>
         <title>{`${blog.title}`}</title>
         <meta name="description" content={`${blog.description}`} />
+        <meta
+          name="keywords"
+          content="Jacob Kyalo, technical blog, web development tutorials, Nextjs tips, React tutorials, JavaScript insights, TypeScript insights, coding blogs"
+        />
         <meta name="author" content="Jacob Kyalo" />
       </Head>
       <main className="w-full md:container md:max-w-4xl">
