@@ -1,23 +1,23 @@
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://jacobkyalo.vercel.app/</loc>
-<lastmod>2024-06-30T17:46:44+00:00</lastmod>
-<priority>1.00</priority>
+<lastmod>2024-06-30T20:53:15+01:00</lastmod>
+<priority>1.0</priority>
 </url>
 <url>
 <loc>https://jacobkyalo.vercel.app/about</loc>
-<lastmod>2024-06-30T17:46:44+00:00</lastmod>
-<priority>0.80</priority>
+<lastmod>2024-06-30T20:53:15+01:00</lastmod>
+<priority>0.8</priority>
 </url>
 <url>
 <loc>https://jacobkyalo.vercel.app/projects</loc>
-<lastmod>2024-06-30T17:46:44+00:00</lastmod>
-<priority>0.80</priority>
+<lastmod>2024-06-30T20:53:15+01:00</lastmod>
+<priority>0.6</priority>
 </url>
 <url>
 <loc>https://jacobkyalo.vercel.app/blog</loc>
-<lastmod>2024-06-30T17:46:44+00:00</lastmod>
-<priority>0.80</priority>
+<lastmod>2024-06-30T20:53:15+01:00</lastmod>
+<priority>0.4</priority>
 </url>
 </urlset>
